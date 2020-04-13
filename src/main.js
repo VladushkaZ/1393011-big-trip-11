@@ -1,38 +1,37 @@
 "use strict";
 
 const createDistTemplate = () => {
-return (
+  return (
     `
             <div class="trip-info__main">
               <h1 class="trip-info__title">Amsterdam &mdash; Chamonix &mdash; Geneva</h1>
 
               <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;20</p>
               `
-);       
+  );
 };
 
 const createCostTemplate = () => {
-return (
+  return (
     `
     <p class="trip-info__cost">
     Total: &euro;&nbsp;<span class="trip-info__cost-value">1230</span>
     </p>
     `
-);       
+  );
 };
 
 
 const createSiteMenuTemplate = () => {
-return (
-            `<nav class="trip-controls__trip-tabs  trip-tabs">
+  return (`<nav class="trip-controls__trip-tabs  trip-tabs">
             <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
             <a class="trip-tabs__btn" href="#">Stats</a>
           </nav>`
-);       
+  );
 };
 const createFilterTemplate = () => {
-return (
-            `
+  return (
+    `
             <form class="trip-filters" action="#" method="get">
               <div class="trip-filters__filter">
                 <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="everything" checked>
@@ -51,11 +50,11 @@ return (
 
               <button class="visually-hidden" type="submit">Accept filter</button>
             </form>`
-);       
+  );
 };
 
 const createSorterTemplate = () => {
-return (
+  return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
             <span class="trip-sort__item  trip-sort__item--day">Day</span>
 
@@ -80,11 +79,11 @@ return (
 
             <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
           </form>`
-);       
+  );
 };
 
 const createPointsTemplate = () => {
-return (
+  return (
     `<li class="trip-days__item  day">
     <div class="day__info">
       
@@ -200,12 +199,11 @@ return (
       </li>
     </ul>
   </li>`
-);       
-};    
+  );
+};
 
 const createEditFormTemplate = () => {
-return (
-    
+  return (
     `<li class="trip-days__item  day">
     <div class="day__info">
       <span class="day__counter">1</span>
@@ -390,27 +388,22 @@ return (
     </ul>
   </li>
                 `
-);       
+  );
 };
 
 const render = (container, template, place = `beforeend`) =>{
-    container.insertAdjacentHTML(place, template);
+  container.insertAdjacentHTML(place, template);
 };
 const siteMainElement = document.querySelector(`.trip-main`);
-
-render (siteMainElement, createDistTemplate(), `afterbegin`);
-
+render(siteMainElement, createDistTemplate(), `afterbegin`);
 const siteHeaderElement = siteMainElement.querySelector(`.trip-controls`);
-render (siteHeaderElement, createCostTemplate(), `beforebegin`);
-render (siteHeaderElement, createSiteMenuTemplate());
-render (siteHeaderElement, createFilterTemplate());
-
+render(siteHeaderElement, createCostTemplate(), `beforebegin`);
+render(siteHeaderElement, createSiteMenuTemplate());
+render(siteHeaderElement, createFilterTemplate());
 const siteEventElement = document.querySelector(`.trip-events`);
-render (siteEventElement, createSorterTemplate());
-
-render (siteEventElement, createEditFormTemplate());
-
+render(siteEventElement, createSorterTemplate());
+render(siteEventElement, createEditFormTemplate());
 const POINT_NUM = 3;
-for (let i=0; i<POINT_NUM; i++){
-    render(siteEventElement, createPointsTemplate());
-};
+for (let i = 0; i < POINT_NUM; i++) {
+  render(siteEventElement, createPointsTemplate());
+}
