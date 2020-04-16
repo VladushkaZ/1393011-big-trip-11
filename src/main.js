@@ -1,3 +1,4 @@
+
 import {createSiteMenuTemplate} from "./components/menu.js";
 import {createFilterTemplate} from "./components/filter.js";
 import {createPointsTemplate} from "./components/points.js";
@@ -5,6 +6,7 @@ import {createEditFormTemplate} from "./components/edit-form.js";
 import {createCostTemplate} from "./components/cost.js";
 import {createDistTemplate} from "./components/distance.js";
 import {createSorterTemplate} from "./components/sorter.js";
+
 
 const render = (container, template, place = `beforeend`) =>{
   container.insertAdjacentHTML(place, template);
