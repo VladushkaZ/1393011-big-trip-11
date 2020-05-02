@@ -2,13 +2,7 @@ import {typeItemsIn} from "../const.js";
 import {typeItemsTo} from "../const.js";
 import {descriptionItems} from "../const.js";
 import {cities} from "../const.js";
-import {AddOffer} from "../const.js";
-import {Train} from "../const.js";
-import {Taxi} from "../const.js";
-import {Ship} from "../const.js";
-import {Restaurant} from "../const.js";
-import {Flight} from "../const.js";
-import {Sightseeing} from "../const.js";
+
 
 const typeItems = typeItemsTo.concat(typeItemsIn);
 
@@ -50,9 +44,6 @@ const generatePoint = () => {
   return {
     type: getRandomArrayItem(typeItems),
     title: getRandomArrayItem(cities),
-    hasOffer: Math.random() > 0.5,
-    offerTitle: Train.offerTitle,
-    offerPrice: getRandomNumber(0, 300),
     duration: `${getRandomNumber(0, 13)}H ${getRandomNumber(0, 60)}M`,
     price: getRandomNumber(5, 500),
     startDateTime,

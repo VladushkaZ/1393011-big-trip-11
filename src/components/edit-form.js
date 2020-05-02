@@ -1,12 +1,7 @@
 import {formatDate} from "../units.js";
 import {formatTime} from "../units.js";
-import {AddOffer} from "../const.js";
-import {Train} from "../const.js";
-import {Taxi} from "../const.js";
-import {Ship} from "../const.js";
-import {Restaurant} from "../const.js";
-import {Flight} from "../const.js";
-import {Sightseeing} from "../const.js";
+import {addOffer} from "../const.js";
+import {typeItemsIn} from "../const.js";
 
 const createChooseType = () => {
   return (
@@ -64,29 +59,42 @@ const createChooseType = () => {
 
 
 export const createEditFormTemplate = (point) => {
-  const {type, title, startDateTime, price, duration, offerPrice, description, picture, isFavorite} = point;
+  const {type, title, startDateTime, price, duration, description, picture, isFavorite} = point;
 
   const favoriteTaskClass = isFavorite ? `checked` : ``;
   const chooseTypeForm = createChooseType();
   const startDate = formatDate(startDateTime);
   const startTime = formatTime(startDateTime);
 
-  const typeItemsIn = [`Check-in`, `Sightseeing`, `Restaurant`];
+  const typeUp = type[0].toUpperCase() + type.slice(1);
   const isType = typeItemsIn.includes(`${type}`);
   const isTitleShowing = !!title;
-  const isOfferShowing = !!offerPrice;
 
   let arr = duration.replace(`H`, `:`);
   arr = arr.replace(`M`, ` `);
   arr = arr.split(`:`);
-  const i = arr.length - 1;
+  const j = arr.length - 1;
   const endDateTime = startDateTime;
-  endDateTime.setHours(endDateTime.getHours() + Number(arr[i - 1]));
-  endDateTime.setMinutes(endDateTime.getMinutes() + Number(arr[i]));
+  endDateTime.setHours(endDateTime.getHours() + Number(arr[j - 1]));
+  endDateTime.setMinutes(endDateTime.getMinutes() + Number(arr[j]));
   const endTime = isTitleShowing ? formatTime(endDateTime) : startTime;
   const endDate = isTitleShowing ? formatDate(endDateTime) : startDate;
 
-  const Title = `${type}`.offerTitle;
+  const offerTitle = [];
+  for (let i = 0; i < addOffer.length; i++) {
+    if (addOffer[i].type === `${type}`) {
+      offerTitle.push(addOffer[i].offerTitle);
+    }
+  }
+  const offerPrice = [];
+  for (let i = 0; i < addOffer.length; i++) {
+    if (addOffer[i].type === `${type}`) {
+      offerPrice.push(addOffer[i].offerPrice);
+    }
+  }
+  const isOfferShowing = !!offerTitle[0];
+  const isOffer2Showing = !!offerTitle[1];
+  const isOffer3Showing = !!offerTitle[2];
 
   return (
     `<li class="trip-days__item  day">
@@ -108,7 +116,7 @@ export const createEditFormTemplate = (point) => {
 
         <div class="event__field-group  event__field-group--destination">
           <label class="event__label  event__type-output" for="event-destination-1">
-            ${type} ${isType ? `in` : `to`}
+            ${typeUp} ${isType ? `in` : `to`}
           </label>
           ${isTitleShowing ? `
           <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${title}" list="destination-list-1">
@@ -159,27 +167,29 @@ export const createEditFormTemplate = (point) => {
             <div class="event__offer-selector">
               <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
               <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">${Title}</span>
+                <span class="event__offer-title">${offerTitle[0]}</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+                &euro;&nbsp;<span class="event__offer-price">${offerPrice[0]}</span>
               </label>
             </div>
+            ${isOffer2Showing ? `
             <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
+              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage">
               <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">${Title}</span>
+                <span class="event__offer-title">${offerTitle[1]}</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+                &euro;&nbsp;<span class="event__offer-price">${offerPrice[1]}</span>
               </label>
-            </div>
+            </div>` : ``}
+            ${isOffer3Showing ? `
             <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
+              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage">
               <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">${Title}</span>
+                <span class="event__offer-title">${offerTitle[2]}</span>
                 &plus;
-                &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+                &euro;&nbsp;<span class="event__offer-price">${offerPrice[2]}</span>
               </label>
-            </div>
+            </div> ` : ``}
             
           </div>
         </section>` : ``}
