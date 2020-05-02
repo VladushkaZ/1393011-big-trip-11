@@ -25,13 +25,13 @@ const siteEventElement = document.querySelector(`.trip-events`);
 render(siteEventElement, createSorterTemplate());
 render(siteEventElement, createEditFormTemplate(points[0]));
 
-const arrAllDates = [];
+const allDates = [];
 for (let i = 1; i < POINT_NUM; i++) {
-  arrAllDates.push(points[i].startDateTime);
+  allDates.push(new Date(points[i].startDateTime));
 }
 const tripDates = () => {
   const tripDays = [];
-  arrAllDates.forEach((date) => {
+  allDates.forEach((date) => {
     if (tripDays.indexOf(date) === -1) {
       tripDays.push(date);
     }
@@ -42,8 +42,9 @@ for (let i = 1; i < POINT_NUM; i++) {
   render(siteEventElement, createDateTemplate(points[i]));
   const conteinerPoints = points.filter((point) => point.startDateTime === tripDates[i]);
   render(siteEventElement, createDateConteinerTemplate(points[i]));
-  points.slice(i, conteinerPoints.length)
-  .forEach((point) => render(siteEventElement, createPointsTemplate(point)));
+  points.slice(i, conteinerPoints.length);
+  // .forEach((point) =>
+  render(siteEventElement, createPointsTemplate(points[i]));
 }
 
 

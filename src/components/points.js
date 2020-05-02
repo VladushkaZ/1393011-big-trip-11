@@ -37,7 +37,11 @@ export const createPointsTemplate = (point) => {
   const isOffer2Showing = !!offerTitle[1];
 
   return (
-    `
+    `<li class="trip-days__item  day">
+    <div class="day__info">
+
+    </div>
+    <ul class="trip-events__list">
       <li class="trip-events__item">
         <div class="event">
           <div class="event__type">
@@ -82,6 +86,14 @@ export const createPointsTemplate = (point) => {
             <span class="visually-hidden">Open event</span>
           </button>
         </div>
-      </li>`
+      </li>
+      
+    
+
+          </button>
+        </div>
+      </li>
+    </ul>
+    </li>`
   );
 };
