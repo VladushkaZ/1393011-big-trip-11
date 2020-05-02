@@ -31,10 +31,11 @@ const description = shuffle(descriptionItems).slice(0, value).join(` `);
 
 
 const getRandomDate = () => {
+  const timestamp = Date.now();
   const targetDate = new Date();
   const sign = Math.random() > 0.5 ? 1 : -1;
-  const diffValue = sign * getRandomNumber(0, 150);
-  targetDate.setDate(targetDate.getDate() + diffValue);
+  const diffValue = sign * getRandomNumber(0, 15000000000);
+  targetDate.setTime(timestamp + diffValue);
   return targetDate;
 };
 

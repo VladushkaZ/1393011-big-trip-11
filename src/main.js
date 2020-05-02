@@ -27,7 +27,7 @@ render(siteEventElement, createEditFormTemplate(points[0]));
 
 const allDates = [];
 for (let i = 1; i < POINT_NUM; i++) {
-  allDates.push(new Date(points[i].startDateTime));
+  allDates.push(points[i].startDateTime.getTime());
 }
 const tripDates = () => {
   const tripDays = [];
