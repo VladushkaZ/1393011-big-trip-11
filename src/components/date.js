@@ -1,7 +1,7 @@
 import {MONTH_NAMES} from "../const.js";
 
 export const createDateTemplate = (date) => {
-  const {startDateTime, dayNum} = date;
+  const {startDateTime} = date;
 
   const startDate = ` ${MONTH_NAMES[startDateTime.getMonth()]} ${startDateTime.getDate()}`;
 
