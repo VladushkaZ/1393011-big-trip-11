@@ -1,39 +1,78 @@
 export const cities = [`Helsinki`, `Rio`, `Stambul`, `New York`, `Amsterdam`, `Prague`, `Munchen`, `Rom`, `Tokio`];
 export const descriptionItems = [`Lorem ipsum dolor sit amet, consectetur adipiscing elit. `, `Cras aliquet varius magna, non porta ligula feugiat eget. `, `Fusce tristique felis at fermentum pharetra. `, `Aliquam id orci ut lectus varius viverra.`, `Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.`, `Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum.`, `Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.`, `Sed sed nisi sed augue convallis suscipit in sed felis.`, `Aliquam erat volutpat.`, `Nunc fermentum tortor ac porta dapibus.`, `In rutrum ac purus sit amet tempus.`];
 
-export const typeItemsTo = [`Taxi`, `Bus`, `Train`, `Ship`, `Transport`, `Drive`, `Flight`];
-export const typeItemsIn = [`Check-in`, `Sightseeing`, `Restaurant`];
+export const typeItemsTo = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
+export const typeItemsIn = [`check-in`, `sightseeing`, `restaurant`];
 
 export const MONTH_NAMES = [
-  `January`,
-  `February`,
-  `March`,
-  `April`,
+  `Jan`,
+  `Feb`,
+  `Mar`,
+  `Apr`,
   `May`,
-  `June`,
-  `July`,
-  `August`,
-  `September`,
-  `October`,
-  `November`,
-  `December`,
+  `Jun`,
+  `Jul`,
+  `Aug`,
+  `Sep`,
+  `Oct`,
+  `Nov`,
+  `Dec`,
 ];
 
-export let AddOffer = class {
-  constructor(type, offerTitle, offerPrice) {
-    this.type = type;
-    this.offerTitle = offerTitle;
-    this.offerPrice = offerPrice;
-  }
-  get fullInfoOffer() {
-    return `${this.offerTitle}`;
-  }
-};
+export const addOffer = [];
 
-export let Train = new AddOffer(`Train`, `Speed train`, `46`);
-export let Restaurant = new AddOffer(`Restaurant`, `All inclusive`, `30`);
-export let Taxi = new AddOffer(`Taxi`, `Help with luggage`, `5`);
-export let Sightseeing = new AddOffer(`Sightseeing`, `Excursion`, `25`);
-export let Flight = new AddOffer(`Flight`, `Comfort class`, `45`);
-export let flight2Offer = new AddOffer(`Flight`, `Meal on the board`, `20`);
-export let Ship = new AddOffer(`Ship`, `Trip with children`, `40`);
+addOffer[0] = {
+  type: `train`,
+  offerTitle: `Speed train`,
+  offerPrice: `52`,
+};
+addOffer[1] = {
+  type: `taxi`,
+  offerTitle: `Help with luggage`,
+  offerPrice: `3`,
+};
+addOffer[2] = {
+  type: `sightseeing`,
+  offerTitle: `Excursion`,
+  offerPrice: `19`,
+};
+addOffer[3] = {
+  type: `flight`,
+  offerTitle: `Comfort class`,
+  offerPrice: `38`,
+};
+addOffer[4] = {
+  type: `taxi`,
+  offerTitle: `To the airport`,
+  offerPrice: `20`,
+};
+addOffer[5] = {
+  type: `ship`,
+  offerTitle: `Trip with children`,
+  offerPrice: `41`,
+};
+addOffer[6] = {
+  type: `flight`,
+  offerTitle: `Meal on the board`,
+  offerPrice: `7`,
+};
+addOffer[7] = {
+  type: `restaurant`,
+  offerTitle: `Meal to go`,
+  offerPrice: `2`,
+};
+addOffer[8] = {
+  type: `drive`,
+  offerTitle: `Green card`,
+  offerPrice: `32`,
+};
+addOffer[8] = {
+  type: `bus`,
+  offerTitle: `Comfort class`,
+  offerPrice: `15`,
+};
+addOffer[3] = {
+  type: `flight`,
+  offerTitle: `Without transit`,
+  offerPrice: `10`,
+};
