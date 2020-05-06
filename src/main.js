@@ -1,7 +1,6 @@
 import SiteMenuComponent from "./components/menu.js";
 import FilterComponent from "./components/filter.js";
 import PointsComponent from "./components/points.js";
-// import PointsConteinerComponent from "./components/points-conteiner.js";
 import DateConteinerComponent from "./components/date-conteiner.js";
 import EditFormComponent from "./components/edit-form.js";
 import SorterComponent from "./components/sorter.js";
@@ -75,10 +74,6 @@ const renderConteiner = (dateConteinerComponent, points) => {
       tripDays.push(dates);
     }
   });
-  // points.slice(0, tripDays.length);
-  // tripDays.forEach((point) => {
-
-  // });
 };
 
 const points = generatePoints(POINT_NUM);
