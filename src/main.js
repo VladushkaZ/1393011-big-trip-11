@@ -65,7 +65,7 @@ const renderConteiner = (dateConteinerComponent, points) => {
   const pointListElement = dateConteinerComponent.getElement().querySelector(`.trip-events__list`);
   const allDates = [];
   points.slice(0, POINT_NUM)
-    .forEach((point) => {   
+    .forEach((point) => {
       renderPoint(pointListElement, point);
       allDates.push(`${new Date(point.startDateTime).getMonth() + 1}. ${new Date(point.startDateTime).getDate()}`);
     });
@@ -74,13 +74,11 @@ const renderConteiner = (dateConteinerComponent, points) => {
     if (tripDays.indexOf(dates) === -1) {
       tripDays.push(dates);
     }
-    console.log(tripDays);
   });
-  points.slice(0, tripDays.length);
-  tripDays.forEach((point) => {
-    
-    
-  });
+  // points.slice(0, tripDays.length);
+  // tripDays.forEach((point) => {
+
+  // });
 };
 
 const points = generatePoints(POINT_NUM);

@@ -27,7 +27,6 @@ function shuffle(arr) {
 }
 
 const value = getRandomNumber(1, 6);
-let description = shuffle(descriptionItems).slice(0, value).join(` `);
 
 
 const getRandomDate = () => {
