@@ -27,7 +27,7 @@ function shuffle(arr) {
 }
 
 const value = getRandomNumber(1, 6);
-const description = shuffle(descriptionItems).slice(0, value).join(` `);
+let description = shuffle(descriptionItems).slice(0, value).join(` `);
 
 
 const getRandomDate = () => {
@@ -44,7 +44,7 @@ const generatePoint = () => {
     title: getRandomArrayItem(cities),
     duration: `${getRandomNumber(0, 2)}D ${getRandomNumber(0, 13)}H ${getRandomNumber(0, 60)}M`,
     price: getRandomNumber(5, 500),
-    description,
+    description: shuffle(descriptionItems).slice(0, value).join(` `),
     picture: `http://picsum.photos/248/152?r=${Math.random()}`,
     isFavorite: Math.random() > 0.5,
   };
