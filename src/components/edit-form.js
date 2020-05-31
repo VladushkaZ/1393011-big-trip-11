@@ -1,6 +1,6 @@
-import {createElement} from "../utils.js";
-import {formatDate} from "../utils.js";
-import {formatTime} from "../utils.js";
+import AbstractComponent from "./abstract-component.js";
+import {formatDate} from "../utils/common.js";
+import {formatTime} from "../utils/common.js";
 import {addOffer} from "../const.js";
 import {typeItemsIn} from "../const.js";
 
@@ -214,25 +214,18 @@ const createEditFormTemplate = (point) => {
   );
 };
 
-export default class PointEdit {
+export default class PointEdit extends AbstractComponent {
   constructor(point) {
+    super();
     this._point = point;
-    this._element = null;
+
   }
 
   getTemplate() {
     return createEditFormTemplate(this._point);
   }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
   }
 }
