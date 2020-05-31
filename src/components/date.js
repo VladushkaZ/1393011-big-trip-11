@@ -1,4 +1,4 @@
-import {createElement} from "../utils.js";
+import AbstractComponent from "./abstract-component.js";
 // import {MONTH_NAMES} from "../const.js";
 // import {formatDate} from "../utils.js";
 
@@ -17,27 +17,16 @@ const createDateTemplate = (point) => {
   );
 };
 
-export default class Date {
+export default class Date extends AbstractComponent {
   constructor(point) {
+    super();
     this._point = point;
-    this._element = null;
   }
 
   getTemplate() {
     return createDateTemplate(this._point);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
-  }
 }
 
 

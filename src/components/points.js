@@ -1,4 +1,5 @@
-import {createElement, formatTime} from "../utils.js";
+import AbstractComponent from "./abstract-component.js";
+import {formatTime} from "../utils.js";
 import {typeItemsIn} from "../const.js";
 import {addOffer} from "../const.js";
 
@@ -83,26 +84,15 @@ const createPointsTemplate = (point) => {
   ;
 };
 
-export default class Point {
+export default class Point extends AbstractComponent {
   constructor(point) {
+    super();
     this._point = point;
 
-    this._element = null;
   }
 
   getTemplate() {
     return createPointsTemplate(this._point);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
-  }
 }
