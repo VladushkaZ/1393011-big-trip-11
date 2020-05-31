@@ -6,7 +6,7 @@ import EditFormComponent from "./components/edit-form.js";
 import SorterComponent from "./components/sorter.js";
 import {generatePoints} from "./mock/points.js";
 import DateComponent from "./components/date.js";
-import {render, RenderPosition} from "./utils.js";
+import {render, replace, RenderPosition} from "./utils/render.js";
 import NoPointsComponent from "./components/no-points.js";
 
 const POINT_NUM = 22;
@@ -15,11 +15,11 @@ const siteHeaderElement = siteMainElement.querySelector(`.trip-main__trip-contro
 const siteEventElement = document.querySelector(`.trip-events`);
 const renderPoint = (pointListElement, point) => {
   const replacePointToEdit = () => {
-    pointListElement.replaceChild(editFormComponent.getElement(), pointsComponent.getElement());
+    replace(editFormComponent, pointsComponent);
   };
 
   const replaceEditToPoint = () => {
-    pointListElement.replaceChild(pointsComponent.getElement(), editFormComponent.getElement());
+    replace(pointsComponent, editFormComponent);
   };
   const onEscKeyDown = (evt) => {
     const isEscKey = evt.key === `Escape` || evt.key === `Esc`;
@@ -45,7 +45,7 @@ const renderPoint = (pointListElement, point) => {
     document.removeEventListener(`keydown`, onEscKeyDown);
   });
 
-  render(pointListElement, pointsComponent.getElement(), RenderPosition.BEFOREEND);
+  render(pointListElement, pointsComponent, RenderPosition.BEFOREEND);
 };
 
 
@@ -53,13 +53,13 @@ const renderConteiner = (dateConteinerComponent, points) => {
   const isAllPointsArchived = points.every((point) => point.isArchive);
 
   if (isAllPointsArchived) {
-    render(dateConteinerComponent.getElement(), new NoPointsComponent().getElement(), RenderPosition.BEFOREEND);
+    render(dateConteinerComponent.getElement(), new NoPointsComponent(), RenderPosition.BEFOREEND);
     return;
   }
 
-  render(dateConteinerComponent.getElement(), new SorterComponent().getElement(), RenderPosition.BEFOREEND);
-  render(dateConteinerComponent.getElement(), new DateComponent(points).getElement(), RenderPosition.BEFOREEND);
-  render(dateConteinerComponent.getElement(), new PointsComponent(points).getElement(), RenderPosition.BEFOREEND);
+  render(dateConteinerComponent.getElement(), new SorterComponent(), RenderPosition.BEFOREEND);
+  render(dateConteinerComponent.getElement(), new DateComponent(points), RenderPosition.BEFOREEND);
+  render(dateConteinerComponent.getElement(), new PointsComponent(points), RenderPosition.BEFOREEND);
 
   const pointListElement = dateConteinerComponent.getElement().querySelector(`.trip-events__list`);
   const allDates = [];
@@ -79,9 +79,9 @@ const renderConteiner = (dateConteinerComponent, points) => {
 const points = generatePoints(POINT_NUM);
 
 
-render(siteHeaderElement, new SiteMenuComponent().getElement(), RenderPosition.BEFOREEND);
-render(siteHeaderElement, new FilterComponent().getElement(), RenderPosition.BEFOREEND);
+render(siteHeaderElement, new SiteMenuComponent(), RenderPosition.BEFOREEND);
+render(siteHeaderElement, new FilterComponent(), RenderPosition.BEFOREEND);
 
 const conteinerComponent = new DateConteinerComponent();
-render(siteEventElement, conteinerComponent.getElement(), RenderPosition.BEFOREEND);
+render(siteEventElement, conteinerComponent, RenderPosition.BEFOREEND);
 renderConteiner(conteinerComponent, points);

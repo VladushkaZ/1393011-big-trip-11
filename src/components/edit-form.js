@@ -1,6 +1,6 @@
 import AbstractComponent from "./abstract-component.js";
-import {formatDate} from "../utils.js";
-import {formatTime} from "../utils.js";
+import {formatDate} from "../utils/common.js";
+import {formatTime} from "../utils/common.js";
 import {addOffer} from "../const.js";
 import {typeItemsIn} from "../const.js";
 

@@ -1,5 +1,5 @@
 import AbstractComponent from "./abstract-component.js";
-import {formatTime} from "../utils.js";
+import {formatTime} from "../utils/common.js";
 import {typeItemsIn} from "../const.js";
 import {addOffer} from "../const.js";
 
