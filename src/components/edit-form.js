@@ -224,5 +224,8 @@ export default class PointEdit extends AbstractComponent {
   getTemplate() {
     return createEditFormTemplate(this._point);
   }
-
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
+  }
 }

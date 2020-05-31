@@ -31,15 +31,14 @@ const renderPoint = (pointListElement, point) => {
   };
 
   const pointsComponent = new PointsComponent(point);
-  const editButton = pointsComponent.getElement().querySelector(`.event__rollup-btn`);
-  editButton.addEventListener(`click`, () => {
+  const pointEditComponent = new EditFormComponent(point);
+  pointsComponent.setEditButtonClickHandler(() => {
     replacePointToEdit();
     document.addEventListener(`keydown`, onEscKeyDown);
   });
 
   const editFormComponent = new EditFormComponent(point);
-  const editForm = editFormComponent.getElement().querySelector(`form`);
-  editForm.addEventListener(`submit`, (evt) => {
+  pointEditComponent.setSubmitHandler((evt) => {
     evt.preventDefault();
     replaceEditToPoint();
     document.removeEventListener(`keydown`, onEscKeyDown);

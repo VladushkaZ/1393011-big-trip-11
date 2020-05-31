@@ -94,5 +94,8 @@ export default class Point extends AbstractComponent {
   getTemplate() {
     return createPointsTemplate(this._point);
   }
-
+  setEditButtonClickHandler(handler) {
+    this.getElement().querySelector(`.event__rollup-btn`)
+      .addEventListener(`click`, handler);
+  }
 }
