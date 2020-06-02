@@ -26,7 +26,7 @@ function shuffle(arr) {
   return arr;
 }
 
-const value = getRandomNumber(1, 6);
+const value = getRandomNumber(0, 6);
 
 
 const getRandomDate = () => {
